@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from 'react'
+import React,{ useState} from 'react'
 import login from '../img/undraw_secure_login_pdn4.png'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -6,11 +6,22 @@ import { Link, useNavigate } from 'react-router-dom'
 function Login() {
 
 	const navigate = useNavigate();
+	
+	const [error, seterror] = useState('');
 
-	const [valid, setvalid] = useState(false);
 
-
-	// const validCorrect =()=> valid && (()=>navigate('home'))
+	const loginError =(infoData)=> {
+		if(infoData === 'Email format is invalid'){
+			seterror('Adresse mail invalide')
+		}else if(infoData === 'Cannot find user'){
+			seterror('Utilisateur invalide')
+		}else if(infoData === 'Incorrect password'){
+			seterror('password invalide')
+		}else{
+			navigate('home')
+		}
+		console.log(infoData)
+	}
 
 	const [formData, setformData] = useState({
 		email:'',
@@ -28,9 +39,10 @@ function Login() {
 		.then(data =>{
 			console.log(data)
 			console.log(formData)
-			// data.user.email === formData.email &&(()=>navigate('home'))
+			loginError(data)
+			
 		})
-		setvalid(true)
+		
 	}
 
     const handleChange=(e)=> {
@@ -49,6 +61,9 @@ return (
 						<div className="mb-3">
 							<h2 className='text-center mb-5 mt-5'>Login</h2>
 						</div>
+						<div className='mb-3'>
+							{error && <div className='alert alert-danger'>{error}</div>}
+						</div>
 						<div className="mb-3">
 							<label  class="form-label">Email</label>
 							<input type="email" className="form-control" placeholder="name@example.com" value={formData.email} onChange={e => handleChange(e)} name='email' required/>
@@ -58,7 +73,7 @@ return (
 							<input type="password" className="form-control" placeholder="Password" value={formData.password} onChange={e => handleChange(e)} name='password' required/>
 						</div>
 						<div className="mb-3 d-flex justify-content-center">
-							<button className='btn btn-light' id='login' onClick={valid && (()=>navigate('home'))}> Login </button>
+							<button className='btn btn-light' id='login' > Login </button>
 						</div>
 					</form>
 					<span className='text-center btn btn-link'>Forgot your password ?</span>

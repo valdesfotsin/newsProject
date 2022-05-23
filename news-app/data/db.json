@@ -87,6 +87,14 @@
       "secondname": "alban",
       "birthday": "2022-05-22",
       "id": 11
+    },
+    {
+      "email": "user1@gmail.com",
+      "password": "$2a$10$M8FGI9JL2uwFokEZwPeOjOrNu0xmMjNrm.jCeLLsixxOetuYhvQ1a",
+      "firstname": "223",
+      "secondname": "",
+      "birthday": "",
+      "id": 12
     }
   ]
 }

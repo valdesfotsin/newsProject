@@ -7,10 +7,24 @@ function Singup() {
 
 	const navigate = useNavigate()
 
-	const [valid, setvalid] = useState(false);
 
-	// const validCorrect =()=>  
-	
+	const [error, seterror] = useState('');
+
+
+	const loginError =(infoData)=> {
+		if(infoData === 'Email format is invalid'){
+			seterror('Adresse mail invalide')
+		}else if(infoData === 'Cannot find user'){
+			seterror('Utilisateur invalide')
+		}else if(infoData === 'Incorrect password'){
+			seterror('password invalide')
+		}else{
+			setTimeout(() => {
+				navigate('/')
+			}, 2000);
+		}
+		console.log(infoData)
+	}	
 	
 
 	const [formData, setformData] = useState({
@@ -20,8 +34,6 @@ function Singup() {
 		email:'',
 		password:''
 	});
-
-	const handleShow=()=>valid&&(()=>navigate('/'))
 		
 		
 
@@ -34,8 +46,10 @@ function Singup() {
 		})
 		.then(res => res.json())
         .then(data => {
-			console.log(data.user.firstname)
-			setvalid(true)
+			console.log(data.user)
+			console.log(formData)
+			loginError(data)
+
 		})
 	}
 
@@ -52,6 +66,9 @@ function Singup() {
 					<form onSubmit={e => handleSubmit(e)}>
 						<div className="mb-3">
 							<h2 className='text-center mb-5 mt-5'>Sing up</h2>
+						</div>
+						<div className='mb-3'>
+							{error && <div className='alert alert-danger'>{error}</div>}
 						</div>
 						<div className="mb-3">
 							<label  class="form-label">First Name</label>
@@ -78,7 +95,7 @@ function Singup() {
 							<input type="text" value={formData.password} onChange={e => handleChange(e)} className="form-control" placeholder="Confirm Password" required  name='confirmpassword'/>
 						</div>
 						<div className="mb-3 d-flex justify-content-center">
-							<button className='btn btn-light' id='login' type='submit' onClick={handleShow()}> Register </button>
+							<button className='btn btn-light' id='login' type='submit'> Register </button>
 						</div>
 					</form>
 					<span className='text-center'>Already have any account ?

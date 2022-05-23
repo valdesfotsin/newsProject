@@ -1,6 +1,8 @@
 import React,{ useEffect, useState} from 'react'
 import axios from 'axios'
 import NewsItems from './NewsItems';
+import Img from '../img/icons8-user-64 (2).png'
+
 
 function NewsList() {
 
@@ -16,17 +18,36 @@ useEffect(() => {
 },[]);
 
   return (
-	<div>
-		{articles.map(article=>{
-			return(
-				<NewsItems
-				title={article.title}
-				description={article.description}
-				url={article.url}
-				urlToImage={article.urlToImage}
-				/>
-			)
-		})}
+	<div className='container mt-4'>
+		<div className='row'>
+			<div className='col-md-3 mt-2'>
+				<div className='contianer card d-flex align-items-center ' style={{width: '18rem'}}>
+					<div className='card-header text-center'>
+						<h3> Info User</h3>
+					</div>
+					<img src={Img} alt='' height='50%' width='50%'/>
+					<div class="card-body text-center">
+						<p class="card-text">Localisation</p>
+						<p class="card-text">Name User</p>
+					</div>
+				</div>
+			</div>
+			<div className='col-md-8'>
+			{articles.map(article=>{
+				return(
+					<NewsItems
+					title={article.title}
+					description={article.description}
+					url={article.url}
+					urlToImage={article.urlToImage}
+					author={article.author}
+					publishedAt={article.publishedAt}
+					/>
+				)
+			})}
+			</div>
+			<div className='col-md-1'></div>
+		</div>
 	</div>
   )
 }

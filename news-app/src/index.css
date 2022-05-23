@@ -24,6 +24,11 @@ code {
 }
 /* Style Signup */
 
+/* Style Home */
+#header{
+  background-color: var(--color-primary);
+  color:#fff,
+}
 
 @media only screen and (min-width: 1200px) {
   /* Style Login */
