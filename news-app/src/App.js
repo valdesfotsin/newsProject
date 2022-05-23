@@ -5,9 +5,6 @@ import Login from './components/Login';
 import Singup from './components/Singup';
 import Home from './components/Home';
 
-
-
-
 function App() {
   return (
     <div className="container">

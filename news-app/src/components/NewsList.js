@@ -7,6 +7,7 @@ import Img from '../img/icons8-user-64 (2).png'
 function NewsList() {
 
 const [articles, setarticles] = useState([]);
+const [ip, setIP] = useState('');
 
 useEffect(() => {
 	const getArticles= async ()=>{
@@ -17,17 +18,28 @@ useEffect(() => {
 	getArticles()
 },[]);
 
+// Localisation
+    const getData = async () => {
+        const res = await axios.get('https://geolocation-db.com/json/')
+        console.log(res.data);
+        setIP(res.data.country_name)
+    }
+    
+    useEffect( () => {
+        getData()
+    }, [])
+
   return (
 	<div className='container mt-4'>
 		<div className='row'>
-			<div className='col-md-3 mt-2'>
+			<div className='col-md-3 m-2'>
 				<div className='contianer card d-flex align-items-center ' style={{width: '18rem'}}>
 					<div className='card-header text-center'>
 						<h3> Info User</h3>
 					</div>
 					<img src={Img} alt='' height='50%' width='50%'/>
 					<div class="card-body text-center">
-						<p class="card-text">Localisation</p>
+						<p class="card-text">Localisation :{ip}</p>
 						<p class="card-text">Name User</p>
 					</div>
 				</div>
