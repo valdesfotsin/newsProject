@@ -12,7 +12,7 @@ const [ip, setIP] = useState('');
 useEffect(() => {
 	const getArticles= async ()=>{
 		const resp = await axios.get('https://newsapi.org/v2/top-headlines?country=us&apiKey=cc9cb112b00a4baca5bad860723b0b80')
-		console.log(resp)
+		console.log(resp.data.articles)
 		setarticles(resp.data.articles)
 	}
 	getArticles()
