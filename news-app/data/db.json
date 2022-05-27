@@ -127,6 +127,14 @@
       "secondname": "sex",
       "birthday": "2022-05-08",
       "id": 16
+    },
+    {
+      "email": "valdesfotsin@gmail.com",
+      "password": "$2a$10$4uy1TsHGT1Msm0MVO4/Dh.cHlmkdB1Vg1Fbc92unOZ4M/QnOwgaoy",
+      "firstname": "valdez",
+      "secondname": "Gerald",
+      "birthday": "2022-05-07",
+      "id": 17
     }
   ]
 }

@@ -13,7 +13,7 @@ const [city, setcity] = useState('');
 
 useEffect(() => {
 	const getArticles= async ()=>{
-		const resp = await axios.get('https://newsapi.org/v2/top-headlines?country=fr&apiKey=cc9cb112b00a4baca5bad860723b0b80')
+		const resp = await axios.get('https://newsapi.org/v2/top-headlines?country=fr&apiKey=f26537e779a74c1abeab17e7fd39b71f')
 		// console.log(resp.data.articles)
 		setarticles(resp.data.articles)
 	}
@@ -31,6 +31,24 @@ useEffect(() => {
         getData()
     }, [])
 
+	//utilisateur
+
+	const [user, setUser] = useState('');
+ 
+
+ 	useEffect (() => {
+		fetch(' http://localhost:5000/users')
+		.then((response) => {
+			return  response.json();
+			
+		})
+		.then((result) =>{
+			setUser ({user: result})
+			console.log(result[result.length-1].firstname);
+		})
+
+ }, []);
+
   return (
 	<div className='container mt-4'>
 		<div className='row'>
@@ -41,7 +59,7 @@ useEffect(() => {
 					</div>
 					<div class="card-body text-center">
 						<BsGeoFill color='rgb(249,168,38)' size={25}/><p class="card-text">{ip},{city}</p>
-						<BsPersonCircle color='rgb(249,168,38)' size={25}/> <p class="card-text">Name User</p>
+						<BsPersonCircle color='rgb(249,168,38)' size={25}/> <p class="card-text"> {} </p>
 					</div>
 				</div>
 			</div>

@@ -15,7 +15,7 @@ function NewsSearch({text,setflag}) {
 
 	// recherche
 	const getSearch= async()=>{
-		const resp = await axios.get(`https://newsapi.org/v2/everything?q=${text}&apiKey=cc9cb112b00a4baca5bad860723b0b80`)
+		const resp = await axios.get(`https://newsapi.org/v2/everything?q=${text}&apiKey=f26537e779a74c1abeab17e7fd39b71f`)
 		console.log(resp)
 		console.log(resp.data.totalResults)
 		setresults(resp.data.articles)
@@ -31,20 +31,9 @@ function NewsSearch({text,setflag}) {
 	<div className='container mt-4' id='infoUser'>
 
 		<div className='row'>
-			<div className='col-md-3 m-2'>
-				{/* <div className='contianer card d-flex align-items-center ' style={{width: '18rem'}}>
-					<div className='card-header text-center'>
-						<h3> Info User</h3>
-					</div>
-					<img src={Img} alt='' height='50%' width='50%'/>
-					<div class="card-body text-center">
-						<p class="card-text">Localisation :{ip}</p>
-						<p class="card-text">Name User</p>
-					</div>
-				</div> */}
-			</div>
+		
 			
-			<div className='col-md-8'>
+			<div className='col-md-11'>
 				<h3>{Nbrresults} results </h3>
 			{results.map(result=>{
 				return(
@@ -59,7 +48,6 @@ function NewsSearch({text,setflag}) {
 				)
 			})}
 			</div>
-			<div className='col-md-1'></div>
 		</div>
 	</div>
 	</>
