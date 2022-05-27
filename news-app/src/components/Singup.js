@@ -16,22 +16,6 @@ function Singup() {
 	const [emailOk, setemailOk] = useState(false)
 	const [passwordOk, setpasswordOk] = useState(false)
 	const [pwdConfirmOk, setpwdConfirmOk] = useState(false)
-
-
-	// const loginError =(infoData)=> {
-	// 	if(infoData === 'Email format is invalid'){
-	// 		seterror('Adresse mail invalide')
-	// 	}else if(infoData === 'Cannot find user'){
-	// 		seterror('Utilisateur invalide')
-	// 	}else if(infoData === 'Incorrect password'){
-	// 		seterror('password invalide')
-	// 	}else{
-	// 		setTimeout(() => {navigate('/')}, 2000);
-	// 	}
-	// 	console.log(infoData)
-	// }	
-	
-
 	const [formData, setformData] = useState({
 		firstname:'',
 		secondname:'',
@@ -101,7 +85,7 @@ function Singup() {
 			})
 			.then(res => res.json())
 			.then(data => signUpErrorMsg(data))
-		  setsubmitOk(true)
+		setsubmitOk(true)
 		}
 		console.log(submitOk);
 	  }
@@ -210,8 +194,7 @@ function Singup() {
 							</button>
 						</div>
 					</form>
-					{submitOk && setTimeout(() => { <div className="alert alert-success" role="alert">Informations bien enrigistrees </div> 
-					navigate('/')}, 3000)}
+					{submitOk && navigate('/')}
 					<span className='text-center'>Already have any account ?
 						<Link to='/' className='text-center btn btn-link'>Login</Link>
 					</span>

@@ -119,6 +119,14 @@
       "secondname": "Mimi",
       "birthday": "2022-05-27",
       "id": 15
+    },
+    {
+      "email": "sexy@sexy.fr",
+      "password": "$2a$10$1WIfop0rGFAyAuf4dHOb2uig2nIj1G2RDIYlfNTklQJEqgZHla6g.",
+      "firstname": "sexyBoy",
+      "secondname": "sex",
+      "birthday": "2022-05-08",
+      "id": 16
     }
   ]
 }

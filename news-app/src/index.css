@@ -52,5 +52,8 @@ code {
   #viewImgSingup{
     display: none;
   }
+  #infoUser{
+    display: none;
+  }
 }
 
